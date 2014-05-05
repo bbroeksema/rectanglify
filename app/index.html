@@ -19,19 +19,30 @@
         <p>
           Made by Bertjan Broeksema
         <p>
-          <button type="button" ng-click="toggleControls()" class="btn btn-default">
-            {{controlsButtonText}}
+          <button type="button" ng-click="controls.isVisible = !controls.isVisible" class="btn btn-default">
+            {{controls.isVisible ? 'Hide controls' : 'Show controls'}}
           </button>
       </div>
-      <div ng-show="controlsVisible">
-        <div class="input-group">
-          <span class="input-group-addon">Initial chunk:</span>
-          <select class="form-control">
-            <option ng-repeat="config in chunkConfigurations">
-              {{config}}
-            </option>
-          </select>
-        </div>
+      <hr />
+      <div collapse="!controls.isVisible">
+        <accordion close-others="true">
+          <accordion-group heading="Data" is-open="controls.isFirstOpen">
+            <div class="input-group">
+              <span class="input-group-addon">Number of elements:</span>
+              <input class="form-control" type="number" min="0" max="1000" value="100" />
+            </div>
+          </accordion-group>
+          <accordion-group heading="Algorithm">
+            <div class="input-group">
+              <span class="input-group-addon">Initial chunk:</span>
+              <select class="form-control">
+                <option ng-repeat="config in chunkConfigurations">
+                  {{config}}
+                </option>
+              </select>
+            </div>
+          </accordion-group>
+        </accordion>
       </div>
     </div>
   </div>
