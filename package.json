@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "name": "Rectanglify",
+  "description": "A demo application for d3-treemap. Inspired by Rectanglify.js.",
+  "repository": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -p 8000"
+  }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="rectanglifyApp">
+<head>
+  <meta charset="utf-8">
+  <title>Rectanglify</title>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-controller="RectanglifyCtrl">
+
+  <div id="content" class="panel panel-default">
+    <div class="panel-body">
+      <div class="text-center">
+        <p>
+          Rectanglify is a javascript demo app for generating colorful rectangular
+          meshes that can be used as SVG images and CSS backgrounds.
+        <p>
+          Rectanglify is open source software. Check it out on Github!
+        <p>
+          Made by Bertjan Broeksema
+        <p>
+          <button type="button" ng-click="toggleControls()" class="btn btn-default">
+            {{controlsButtonText}}
+          </button>
+      </div>
+      <div ng-show="controlsVisible">
+        <div class="input-group">
+          <span class="input-group-addon">Initial chunk:</span>
+          <select class="form-control">
+            <option ng-repeat="config in chunkConfigurations">
+              {{config}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../bower_components/d3/d3.js"></script>
+  <script src="../bower_components/d3-treemap/d3.treemap.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+</body>
+</html>

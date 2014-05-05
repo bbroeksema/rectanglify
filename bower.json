@@ -1,0 +1,14 @@
+{
+  "name": "Rectanglify",
+  "description": "A demo application for d3-treemap. Inspired by Rectanglify.js.",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "bootstrap": "~3.1.1",
+    "d3": "~3.4.6",
+    "d3-treemap": "https://github.com/bbroeksema/d3-treemap.git"
+  }
+}
