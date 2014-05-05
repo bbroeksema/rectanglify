@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "angular": "1.2.x",
+    "angular-bootstrap": "0.11.0",
     "bootstrap": "~3.1.1",
     "d3": "~3.4.6",
     "d3-treemap": "https://github.com/bbroeksema/d3-treemap.git"
