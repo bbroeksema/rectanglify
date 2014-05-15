@@ -38,6 +38,7 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
         .style("fill", col)
         .style("stroke", col);
 
+      // From: https://github.com/qrohlf/trianglify
       var s = new XMLSerializer();
       var svgString = s.serializeToString(svg.node());
       var base64 = btoa(svgString);
