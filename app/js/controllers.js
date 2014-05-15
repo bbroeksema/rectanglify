@@ -56,14 +56,14 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
     $scope.data = [];
     $scope.config = {
       data: {
-        elements: 16
+        elements: 100
       },
       vis: {
         treemap: d3.treemap()
       }
     };
     $scope.controls = {
-      isVisible: true,
+      isVisible: false,
       isFirstOpen: true
     };
 
