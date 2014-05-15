@@ -29,7 +29,9 @@
           <accordion-group heading="Data" is-open="controls.isFirstOpen">
             <div class="input-group">
               <span class="input-group-addon">Number of elements:</span>
-              <input class="form-control" type="number" min="0" max="1000" value="100" />
+              <input class="form-control" type="number" min="0" max="1000"
+                     ng-model="config.data.elements"
+                     ng-change="generateData()" />
             </div>
           </accordion-group>
           <accordion-group heading="Algorithm">
@@ -48,6 +50,7 @@
   </div>
 
   <script src="../bower_components/d3/d3.js"></script>
+  <script src="../bower_components/colorbrewer/colorbrewer.js"></script>
   <script src="../bower_components/d3-treemap/d3.treemap.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
