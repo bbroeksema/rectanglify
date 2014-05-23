@@ -45,13 +45,28 @@
             </div>
           </accordion-group>
           <accordion-group heading="Algorithm">
-            <div class="input-group">
-              <span class="input-group-addon">Initial chunk:</span>
-              <select class="form-control">
-                <option ng-repeat="config in chunkConfigurations">
-                  {{config}}
-                </option>
-              </select>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label for="algoConfigSelect" class="col-sm-3 control-label">Configuration:</label>
+                <div class="col-sm-9">
+                  <select id="algoConfigSelect" class="form-control"
+                          ng-options="config for config in algorithmConfigurations"
+                          ng-model="algorithmConfiguration"
+                          ng-change="visualize()"
+                          ng-disabled="algorithmConfigurations.length &lt;= 1">
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="chunkConfigSelect" class="col-sm-3 control-label">Initial chunk:</label>
+                <div class="col-sm-9">
+                  <select id="chunkConfigSelect" class="form-control"
+                          ng-model="chunkConfiguration"
+                          ng-options="config for config in chunkConfigurations"
+                          ng-change="visualize()">
+                  </select>
+                </div>
+              </div>
             </div>
           </accordion-group>
         </accordion>

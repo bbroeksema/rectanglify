@@ -14,7 +14,7 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       }
     }
 
-    function visualize() {
+    $scope.visualize = function() {
       var data = $scope.data,
           rects = [],
           body = d3.select("body"),
@@ -53,7 +53,7 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
     $scope.generateData = function() {
       var count = $scope.config.data.elements;
       $scope.data = Array.apply(null, Array(count)).map(Math.random);
-      visualize();
+      $scope.visualize();
     }
 
     $scope.data = [];
@@ -67,12 +67,13 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       isFirstOpen: true
     };
 
-    $scope.chunkConfigurations = Object
-      .getOwnPropertyNames(d3.layout.phrase)
-      .filter(function(x) { return x !== 'properties'; });
+    $scope.algorithmConfigurations = Object.getOwnPropertyNames(d3.treemap.configurations);
+    $scope.algorithmConfiguration = $scope.algorithmConfigurations[0];
+    $scope.chunkConfigurations = d3.treemap.configurations.grid.phrase.allowed;
+    $scope.chunkConfiguration = $scope.chunkConfigurations[0];
 
     // Generate an initial data set and visualize the results.
     $scope.generateData();
 
-    angular.element($window).bind('resize', visualize);
+    angular.element($window).bind('resize', $scope.visualize);
   }]);
