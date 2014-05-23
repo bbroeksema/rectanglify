@@ -47,7 +47,7 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       document.body.setAttribute('style', 'background-image: ' + dataUrl);
     }
 
-    function generateData() {
+    $scope.generateData = function() {
       var count = $scope.config.data.elements;
       $scope.data = Array.apply(null, Array(count)).map(Math.random);
       visualize();
@@ -67,7 +67,6 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       isFirstOpen: true
     };
 
-    $scope.generateData = generateData;
     $scope.chunkConfigurations = Object
       .getOwnPropertyNames(d3.layout.phrase)
       .filter(function(x) { return x !== 'properties'; });
