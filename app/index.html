@@ -32,11 +32,16 @@
       <div collapse="!controls.isVisible">
         <accordion close-others="true">
           <accordion-group heading="Data" is-open="controls.isFirstOpen">
-            <div class="input-group">
-              <span class="input-group-addon">Number of elements:</span>
-              <input class="form-control" type="number" min="0" max="1000"
-                     ng-model="config.data.elements"
-                     ng-change="generateData()" />
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label for="numberOfElementsInput" class="col-sm-3 control-label"># of elements:</label>
+                <div class="col-sm-9">
+                  <input id="numberOfElementsInput" class="form-control"
+                         type="number" min="0" max="1000"
+                         ng-model="config.data.elements"
+                         ng-change="generateData()" />
+                </div>
+              </div>
             </div>
           </accordion-group>
           <accordion-group heading="Algorithm">
