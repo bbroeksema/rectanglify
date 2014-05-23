@@ -19,10 +19,13 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
           rects = [],
           body = d3.select("body"),
           svg, g,
-          col = color(data.length);
+          col = color(data.length),
+          treemap = d3.treemap(),
+          config = d3.treemap.configurations[this.algorithmConfiguration];
 
-      $scope.config.vis.treemap.size([$window.innerWidth, $window.innerHeight])
-      rects = $scope.config.vis.treemap(data)
+      treemap.size([$window.innerWidth, $window.innerHeight]);
+      treemap.phrase(config.phrase.make(this.chunkConfiguration));
+      rects = treemap(data)
 
       svg = d3.select(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
       svg.attr("width", $window.innerWidth)
@@ -58,9 +61,6 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       data: {
         elements: 100
       },
-      vis: {
-        treemap: d3.treemap()
-      }
     };
     $scope.controls = {
       isVisible: false,
