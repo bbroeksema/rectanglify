@@ -21,10 +21,15 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
           svg, g,
           col = color(data.length),
           treemap = d3.treemap(),
-          config = d3.treemap.configurations[this.algorithmConfiguration];
+          config = this.algorithmConfiguration || $scope.algorithmConfiguration,
+          chunkConfiguration = this.chunkConfiguration || $scope.chunkConfiguration,
+          sizeFunction = this.sizeFunction || $scope.sizeFunction;
 
+      config = d3.treemap.configurations[config];
       treemap.size([$window.innerWidth, $window.innerHeight]);
-      treemap.phrase(config.phrase.make(this.chunkConfiguration));
+      treemap.itemSize(config.itemSize.make(sizeFunction));
+      treemap.phrase(config.phrase.make(chunkConfiguration));
+
       rects = treemap(data)
 
       svg = d3.select(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
@@ -53,6 +58,14 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
     $scope.generateData = function() {
       var count = $scope.config.data.elements;
       $scope.data = Array.apply(null, Array(count)).map(Math.random);
+    }
+
+    $scope.updateChunkConfigurations = function() {
+      var config = this.algorithmConfiguration || $scope.algorithmConfiguration;
+      $scope.sizeFunctions = d3.treemap.configurations[config].itemSize.allowed;
+      $scope.sizeFunction = $scope.sizeFunctions[0];
+      $scope.chunkConfigurations = d3.treemap.configurations[config].phrase.allowed;
+      $scope.chunkConfiguration = $scope.chunkConfigurations[0];
       $scope.visualize();
     }
 
@@ -67,13 +80,11 @@ controllers.controller('RectanglifyCtrl', ['$scope', '$window',
       isFirstOpen: true
     };
 
+    $scope.generateData();
+
     $scope.algorithmConfigurations = Object.getOwnPropertyNames(d3.treemap.configurations);
     $scope.algorithmConfiguration = $scope.algorithmConfigurations[0];
-    $scope.chunkConfigurations = d3.treemap.configurations.grid.phrase.allowed;
-    $scope.chunkConfiguration = $scope.chunkConfigurations[0];
-
-    // Generate an initial data set and visualize the results.
-    $scope.generateData();
+    $scope.updateChunkConfigurations();
 
     angular.element($window).bind('resize', $scope.visualize);
   }]);

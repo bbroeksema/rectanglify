@@ -41,7 +41,7 @@
                   <input id="numberOfElementsInput" class="form-control"
                          type="number" min="0" max="1000"
                          ng-model="config.data.elements"
-                         ng-change="generateData()" />
+                         ng-change="generateData(); visualize()" />
                 </div>
               </div>
             </div>
@@ -54,8 +54,19 @@
                   <select id="algoConfigSelect" class="form-control"
                           ng-options="config for config in algorithmConfigurations"
                           ng-model="algorithmConfiguration"
-                          ng-change="visualize()"
+                          ng-change="updateChunkConfigurations()"
                           ng-disabled="algorithmConfigurations.length &lt;= 1">
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="itemSizeSelect" class="col-sm-3 control-label">Item size:</label>
+                <div class="col-sm-9">
+                  <select id="itemSizeSelect" class="form-control"
+                          ng-options="sizeFun for sizeFun in sizeFunctions"
+                          ng-model="sizeFunction"
+                          ng-change="visualize()"
+                          ng-disabled="sizeFunctions.length &lt;= 1">
                   </select>
                 </div>
               </div>
